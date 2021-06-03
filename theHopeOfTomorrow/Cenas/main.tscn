@@ -1,0 +1,363 @@
+[gd_scene load_steps=39 format=2]
+
+[ext_resource path="res://Scripts/main.gd" type="Script" id=1]
+[ext_resource path="res://Cenas/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Cenas/parallax.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scripts/Pause.gd" type="Script" id=4]
+[ext_resource path="res://sprites/OtherButton-04.png" type="Texture" id=5]
+[ext_resource path="res://UI/bg.png" type="Texture" id=6]
+[ext_resource path="res://UI/menu.png" type="Texture" id=7]
+[ext_resource path="res://UI/play.png" type="Texture" id=8]
+[ext_resource path="res://Fonts/Bubblegum.ttf" type="DynamicFontData" id=9]
+[ext_resource path="res://UI/pause.png" type="Texture" id=10]
+[ext_resource path="res://Cenas/Enemy.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Cenas/Enemob.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Cenas/Potion.tscn" type="PackedScene" id=13]
+[ext_resource path="res://UI/PNG/simple/17.png" type="Texture" id=14]
+[ext_resource path="res://UI/table.png" type="Texture" id=15]
+[ext_resource path="res://sprites/shadedLight10.png" type="Texture" id=16]
+[ext_resource path="res://sprites/flatLight08.png" type="Texture" id=17]
+[ext_resource path="res://sprites/shadedLight03.png" type="Texture" id=18]
+[ext_resource path="res://sprites/flatLight01.png" type="Texture" id=19]
+[ext_resource path="res://sprites/transparentLight47.png" type="Texture" id=20]
+[ext_resource path="res://sprites/shadedLight49.png" type="Texture" id=21]
+[ext_resource path="res://Sounds/17 Theme for the Nocturnal (online-audio-converter.com).wav" type="AudioStream" id=22]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.792157, 0.945098, 0.0509804, 1 )
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.960784, 0.117647, 0.0392157, 1 )
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.878431, 0.854902, 0.854902, 1 )
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0.882353, 0.529412, 0.14902, 1 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 255
+font_data = ExtResource( 9 )
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 930.752, 40.8206 )
+
+[sub_resource type="DynamicFont" id=7]
+size = 65
+font_data = ExtResource( 9 )
+
+[sub_resource type="DynamicFont" id=8]
+size = 80
+font_data = ExtResource( 9 )
+
+[sub_resource type="DynamicFont" id=9]
+size = 60
+font_data = ExtResource( 9 )
+
+[sub_resource type="DynamicFont" id=10]
+size = 90
+font_data = ExtResource( 9 )
+
+[sub_resource type="DynamicFont" id=11]
+size = 90
+font_data = ExtResource( 9 )
+
+[sub_resource type="DynamicFont" id=12]
+size = 80
+font_data = ExtResource( 9 )
+
+[sub_resource type="DynamicFont" id=13]
+size = 55
+font_data = ExtResource( 9 )
+
+[sub_resource type="DynamicFont" id=14]
+size = 55
+font_data = ExtResource( 9 )
+
+[sub_resource type="DynamicFont" id=15]
+size = 70
+font_data = ExtResource( 9 )
+
+[sub_resource type="DynamicFont" id=16]
+size = 55
+font_data = ExtResource( 9 )
+
+[node name="main" type="Node"]
+script = ExtResource( 1 )
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+position = Vector2( 64.6692, 720.348 )
+collision_mask = 6
+
+[node name="parallax" parent="." instance=ExtResource( 3 )]
+
+[node name="Control" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="saude_bar" type="ProgressBar" parent="Control"]
+margin_left = 21.0
+margin_top = 11.0
+margin_right = 934.0
+margin_bottom = 56.0
+custom_styles/fg = SubResource( 1 )
+custom_styles/bg = SubResource( 2 )
+value = 100.0
+
+[node name="bar2" type="ProgressBar" parent="Control"]
+margin_left = 20.0
+margin_top = 55.0
+margin_right = 933.0
+margin_bottom = 102.0
+custom_styles/fg = SubResource( 3 )
+custom_styles/bg = SubResource( 4 )
+custom_colors/font_color = Color( 0.929412, 0.917647, 0.917647, 1 )
+custom_colors/font_color_shadow = Color( 0.94902, 0.0235294, 0.0235294, 1 )
+value = 100.0
+
+[node name="Pause" type="Node" parent="."]
+pause_mode = 2
+script = ExtResource( 4 )
+
+[node name="pause" type="TouchScreenButton" parent="Pause"]
+position = Vector2( 1776.51, 11.2754 )
+scale = Vector2( 0.0517244, 0.0517465 )
+normal = ExtResource( 5 )
+action = "Pause"
+
+[node name="bg" type="Sprite" parent="Pause"]
+visible = false
+position = Vector2( 985.806, 456.663 )
+scale = Vector2( 0.671119, 0.653208 )
+texture = ExtResource( 6 )
+
+[node name="irmenu" type="TouchScreenButton" parent="Pause/bg"]
+position = Vector2( -525.303, -60.3989 )
+scale = Vector2( 1.83349, 1.90239 )
+normal = ExtResource( 7 )
+
+[node name="voltarjogo" type="TouchScreenButton" parent="Pause/bg"]
+position = Vector2( 60.6057, -60.3989 )
+scale = Vector2( 1.83349, 1.90239 )
+normal = ExtResource( 8 )
+action = "despausar"
+
+[node name="Label" type="Label" parent="Pause/bg"]
+visible = false
+margin_left = -546.537
+margin_top = -387.0
+margin_right = 538.463
+margin_bottom = -115.0
+custom_fonts/font = SubResource( 5 )
+text = "Pausado"
+
+[node name="pause" type="Sprite" parent="Pause/bg"]
+position = Vector2( 7.98047, -100.1 )
+scale = Vector2( 1.4513, 0.623081 )
+texture = ExtResource( 10 )
+
+[node name="Viewport" type="Viewport" parent="."]
+
+[node name="Enemy" parent="Viewport" instance=ExtResource( 11 )]
+position = Vector2( 2254.03, 698.184 )
+
+[node name="Enemy2" parent="Viewport" instance=ExtResource( 11 )]
+position = Vector2( 2078.79, 135.009 )
+
+[node name="Enemy3" parent="Viewport" instance=ExtResource( 11 )]
+position = Vector2( 2090.17, 406.759 )
+
+[node name="Enemob" parent="Viewport" instance=ExtResource( 12 )]
+position = Vector2( 2614.35, 688.658 )
+
+[node name="Potion" parent="Viewport" instance=ExtResource( 13 )]
+position = Vector2( 2017.59, 683.802 )
+
+[node name="floor" type="StaticBody2D" parent="."]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="floor"]
+position = Vector2( 917.432, 70.9743 )
+shape = SubResource( 6 )
+
+[node name="TimerPotion" type="Timer" parent="."]
+wait_time = 3.1
+
+[node name="TimerEne" type="Timer" parent="."]
+wait_time = 3.9
+
+[node name="Start" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="Score" type="Timer" parent="."]
+
+[node name="MenuDead" type="Node2D" parent="."]
+visible = false
+
+[node name="p_again" type="TouchScreenButton" parent="MenuDead"]
+position = Vector2( 442.603, 349.656 )
+normal = ExtResource( 14 )
+
+[node name="Label" type="Label" parent="MenuDead/p_again"]
+margin_left = 66.3905
+margin_top = 203.597
+margin_right = 433.391
+margin_bottom = 376.597
+custom_fonts/font = SubResource( 7 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Play Again"
+
+[node name="p_menu" type="TouchScreenButton" parent="MenuDead"]
+position = Vector2( 975.497, 348.992 )
+normal = ExtResource( 14 )
+
+[node name="Label" type="Label" parent="MenuDead/p_menu"]
+margin_left = 134.551
+margin_top = 193.417
+margin_right = 473.551
+margin_bottom = 447.417
+custom_fonts/font = SubResource( 8 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "MENU
+"
+
+[node name="labelmorte" type="Label" parent="MenuDead"]
+margin_left = 825.967
+margin_top = 340.711
+margin_right = 1245.97
+margin_bottom = 405.711
+custom_fonts/font = SubResource( 9 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Morreu!!!"
+
+[node name="table_score" type="Sprite" parent="."]
+position = Vector2( 1473.19, 68.9921 )
+scale = Vector2( 0.881697, 0.677356 )
+texture = ExtResource( 14 )
+
+[node name="lbl_Score" type="Label" parent="."]
+margin_left = 1426.55
+margin_top = 23.829
+margin_right = 1567.55
+margin_bottom = 220.829
+custom_fonts/font = SubResource( 10 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "00
+"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="janela_scoreBoard" type="Sprite" parent="CanvasLayer"]
+visible = false
+position = Vector2( 959.165, 496.345 )
+texture = ExtResource( 15 )
+
+[node name="btn_save" type="TouchScreenButton" parent="CanvasLayer/janela_scoreBoard"]
+position = Vector2( 42.9526, 253.74 )
+scale = Vector2( 0.688109, 0.357772 )
+normal = ExtResource( 14 )
+
+[node name="save" type="Label" parent="CanvasLayer/janela_scoreBoard/btn_save"]
+margin_left = 77.619
+margin_top = 186.203
+margin_right = 419.619
+margin_bottom = 483.203
+custom_fonts/font = SubResource( 11 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Salvar
+
+"
+
+[node name="lbltitle" type="Label" parent="CanvasLayer/janela_scoreBoard"]
+margin_left = -133.396
+margin_top = -390.427
+margin_right = 97.6042
+margin_bottom = -215.427
+custom_fonts/font = SubResource( 12 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Score
+"
+
+[node name="lblnome" type="Label" parent="CanvasLayer/janela_scoreBoard"]
+margin_left = -347.24
+margin_top = 175.406
+margin_right = -188.24
+margin_bottom = 234.406
+custom_fonts/font = SubResource( 13 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Nome:"
+
+[node name="lblpts" type="Label" parent="CanvasLayer/janela_scoreBoard"]
+margin_left = -349.658
+margin_top = 292.119
+margin_right = -133.658
+margin_bottom = 413.119
+custom_fonts/font = SubResource( 14 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Pontos:
+"
+
+[node name="lblPontos" type="Label" parent="CanvasLayer/janela_scoreBoard"]
+margin_left = -128.356
+margin_top = 283.937
+margin_right = 31.6445
+margin_bottom = 436.937
+custom_fonts/font = SubResource( 15 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "0
+"
+
+[node name="lbl_Score" type="Label" parent="CanvasLayer/janela_scoreBoard"]
+margin_left = -345.0
+margin_top = -265.982
+margin_right = 341.0
+margin_bottom = 107.018
+custom_fonts/font = SubResource( 16 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+
+[node name="lenome" type="LineEdit" parent="CanvasLayer/janela_scoreBoard"]
+margin_left = -172.79
+margin_top = 169.211
+margin_right = 339.21
+margin_bottom = 244.211
+
+[node name="Controls" type="CanvasLayer" parent="."]
+
+[node name="cima" type="TouchScreenButton" parent="Controls"]
+position = Vector2( 21.5406, 852.167 )
+scale = Vector2( 3.58224, 2.64443 )
+normal = ExtResource( 16 )
+pressed = ExtResource( 17 )
+action = "cima"
+
+[node name="baixo" type="TouchScreenButton" parent="Controls"]
+visible = false
+position = Vector2( 266.772, 888.204 )
+scale = Vector2( 4.03101, 2.37969 )
+normal = ExtResource( 18 )
+pressed = ExtResource( 19 )
+action = "baixo"
+
+[node name="shot" type="TouchScreenButton" parent="Controls"]
+position = Vector2( 1568.11, 803.131 )
+scale = Vector2( 3.85286, 3.03776 )
+normal = ExtResource( 20 )
+pressed = ExtResource( 21 )
+action = "ui_shot"
+
+[node name="som1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 22 )
+autoplay = true
+[connection signal="rein" from="Player" to="." method="game_over"]
+[connection signal="released" from="Pause/bg/irmenu" to="." method="_on_irmenu_released"]
+[connection signal="released" from="Pause/bg/voltarjogo" to="." method="_on_voltarjogo_released"]
+[connection signal="timeout" from="TimerPotion" to="." method="_on_TimerPotion_timeout"]
+[connection signal="timeout" from="TimerEne" to="." method="_on_TimerEne_timeout"]
+[connection signal="timeout" from="Start" to="." method="_on_Start_timeout"]
+[connection signal="timeout" from="Score" to="." method="_on_Score_timeout"]
+[connection signal="pressed" from="MenuDead/p_again" to="." method="_on_p_again_pressed"]
+[connection signal="pressed" from="MenuDead/p_menu" to="." method="_on_p_menu_pressed"]
+[connection signal="pressed" from="CanvasLayer/janela_scoreBoard/btn_save" to="." method="_on_btn_save_pressed"]
+[connection signal="released" from="CanvasLayer/janela_scoreBoard/btn_save" to="." method="_on_btn_save_released"]

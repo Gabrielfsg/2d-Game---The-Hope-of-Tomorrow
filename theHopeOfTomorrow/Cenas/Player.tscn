@@ -1,0 +1,104 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
+[ext_resource path="res://sprites/Sprites Personagem Principal/hero cam1.png" type="Texture" id=2]
+[ext_resource path="res://sprites/Sprites Personagem Principal/hero cam2.png" type="Texture" id=3]
+[ext_resource path="res://sprites/Sprites Personagem Principal/hero pulo final.png" type="Texture" id=4]
+[ext_resource path="res://sprites/Sprites Personagem Principal/Hero png parado v2.png" type="Texture" id=5]
+[ext_resource path="res://sprites/hero morto.png" type="Texture" id=6]
+[ext_resource path="res://Sounds/laser7.wav" type="AudioStream" id=7]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "correr",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 4 ) ],
+"loop": true,
+"name": "pular",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 5 ) ],
+"loop": true,
+"name": "parado",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 6 ) ],
+"loop": true,
+"name": "morte",
+"speed": 5.0
+} ]
+
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 34.0043
+height = 65.9498
+
+[sub_resource type="CapsuleShape2D" id=3]
+radius = 44.5058
+height = 53.0751
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 17.9366, 624.209 )
+
+[sub_resource type="CapsuleShape2D" id=5]
+radius = 22.0672
+height = 80.9218
+
+[node name="Player" type="KinematicBody2D"]
+position = Vector2( 799.611, 534.88 )
+collision_mask = 0
+script = ExtResource( 1 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( -0.524826, 0.583206 )
+scale = Vector2( 0.774505, 0.833378 )
+frames = SubResource( 1 )
+animation = "correr"
+
+[node name="shape" type="CollisionShape2D" parent="."]
+position = Vector2( -17.5322, -5.84407 )
+shape = SubResource( 2 )
+
+[node name="spawn_bullet" type="Position2D" parent="."]
+position = Vector2( 56.7013, -5.86632 )
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[node name="Area2D" type="Area2D" parent="."]
+editor/display_folded = true
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( -21.8651, 4.11192 )
+shape = SubResource( 3 )
+
+[node name="body2" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="shape2" type="CollisionShape2D" parent="body2"]
+position = Vector2( -69.6641, -8.74164 )
+shape = SubResource( 4 )
+
+[node name="body3" type="Area2D" parent="."]
+editor/display_folded = true
+
+[node name="shape3" type="CollisionShape2D" parent="body3"]
+position = Vector2( -18.8779, -3.58362 )
+shape = SubResource( 5 )
+
+[node name="tiro" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+[connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]
+[connection signal="area_entered" from="body2" to="." method="_on_body2_area_entered"]
+[connection signal="body_entered" from="body2" to="." method="_on_body2_body_entered"]
+[connection signal="area_entered" from="body3" to="." method="_on_body3_area_entered"]

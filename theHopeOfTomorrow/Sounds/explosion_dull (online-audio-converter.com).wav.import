@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/explosion_dull (online-audio-converter.com).wav-034f86fe70e1119e212cb1d6a9cc19ba.sample"
+
+[deps]
+
+source_file="res://Sounds/explosion_dull (online-audio-converter.com).wav"
+dest_files=[ "res://.import/explosion_dull (online-audio-converter.com).wav-034f86fe70e1119e212cb1d6a9cc19ba.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0
